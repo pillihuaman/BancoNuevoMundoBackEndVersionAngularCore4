@@ -1,0 +1,79 @@
+﻿
+
+<div class="container">
+    <h3>Detalle de la compra</h3>
+    <div class="row">
+        <div class="col-md-1 col-sm-1">
+            <span>Numeracion</span>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <span>Nombre</span>
+        </div>
+        <div class="col-md-1  col-sm-1">
+            <span>Precio</span>
+        </div>
+
+        <div class="col-md-1 col-sm-1">
+            <span>Total IGV</span>
+        </div>
+
+        <div class="col-md-1 col-sm-1">
+            <span>Cantidad </span>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <span>Estado </span>
+        </div>
+
+        <div class="col-md-2 col-sm-2">
+            <span>Fecha Producción </span>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <span>Fecha de expiración </span>
+        </div>
+    </div>
+    </div>
+
+    @*@if (Model != null)
+    {
+        var numeracion = 1;
+
+        foreach (var BEpedido in Model)
+        {
+            <form asp-action"VerDetallePedido">
+                <div class="row">
+                    <div class="col-md-1 col-sm-1">
+                        <span>@numeracion</span>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <span>@BEpedido.Nombre</span>
+                    </div>
+                    <div class="col-md-1  col-sm-1">
+                        <span>@BEpedido.Total</span>
+                    </div>
+
+                    <div class="col-md-1 col-sm-1">
+                        <span>@BEpedido.TotalIGV</span>
+                    </div>
+
+                    <div class="col-md-1 col-sm-1">
+                        <span>@BEpedido.Cantidad </span>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <span>Estado </span>
+                    </div>
+
+                    <div class="col-md-2 col-sm-2">
+                        <span>@BEpedido.fechaproduccion </span>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <span>@BEpedido.fechaexpiracion </span>
+                    </div>
+                </div>
+
+            </form>
+            @numeracion= numeracion + 1;
+
+        }
+    }
+
+</div>*@

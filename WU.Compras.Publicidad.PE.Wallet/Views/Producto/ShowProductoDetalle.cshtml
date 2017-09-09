@@ -1,0 +1,24 @@
+﻿@model VE.BusinessEntity.Base.BEProducto
+
+@if (Model != null)
+{
+    <div class='row'>
+            <div class="col-xs-3">
+                <a href="product_details.html"><img src="@ViewBag.URLimagen" alt=""></a>
+                <div class="caption">
+                    <h5>@Model.Descripcion</h5>
+                    <input type="hidden" name="IDproducto" value="@Model.codigo" />
+                    <p>
+
+                    </p>
+                    <h4 style="text-align:center">
+                        <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a>
+                        <a class="btn btn-primary" href="#">@Model.Precio</a>
+                    </h4>
+                </div>
+            </div>
+
+        
+    </div>
+
+}

@@ -1,0 +1,56 @@
+{
+  "version": 2,
+  "exports": {
+    "VE.BusinessEntity/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6",
+      "compile": {
+        "bin/Debug/VE.BusinessEntity.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/VE.BusinessEntity.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/VE.BusinessEntity.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "VE.BusinessLogical/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6",
+      "compile": {
+        "bin/Debug/VE.BusinessLogical.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/VE.BusinessLogical.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/VE.BusinessLogical.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "VE.DataAccess/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6",
+      "compile": {
+        "bin/Debug/VE.DataAccess.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/VE.DataAccess.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/VE.DataAccess.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

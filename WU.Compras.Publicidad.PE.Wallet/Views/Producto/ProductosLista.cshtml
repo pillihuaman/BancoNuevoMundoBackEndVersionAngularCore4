@@ -1,0 +1,78 @@
+﻿@model IEnumerable<VE.BusinessEntity.MPProducto>
+@if (Model != null)
+{
+    <div class="container">
+        <div class='row'>
+            @foreach (var modelo in Model)
+            {
+                <form asp-action="ShowProductoDetalle">
+                    <div class="col-md-4 w-100">
+                        <a href="@modelo.BEFoto.rutafoto"><img class="img-responsive" style="height:190px;" src="@modelo.BEFoto.rutafoto" alt=""></a>
+                        <div class="caption">
+                            <h5>@modelo.Producto.Descripcion</h5>
+                            <input type="hidden" name="rutafoto" value="@modelo.BEFoto.rutafoto" />
+                            <input  type="hidden" name="Codigo" value="@modelo.Producto.codigo" />
+                            <p>
+                            </p>
+                            <h4>
+                                <a class="btn btn-primary crearPedido btlDetalle" href="#">Comprar</a>
+                                <a class="btn ">Ver detalle</a>
+                                <a class="btn btnAgregarProducto"
+                                   codigo=@modelo.Producto.codigo
+                                   rutafoto=@modelo.BEFoto.rutafoto
+                                   Nombre=@modelo.Producto.Nombre
+                                   Stock=@modelo.Producto.Stock
+                                   fechaexpiracion=@modelo.Producto.fechaexpiracion
+                                   fechaproduccion="@modelo.Producto.fechaproduccion"><label id="@modelo.Producto.codigo" data-toggle="modal" data-target="#Modal1" style="font-weight:normal">Agregar</label><i class="icon-shopping-cart"></i></a>
+                                <a class="text-left small" href="#">@modelo.Producto.Precio s/.</a>
+                            </h4>
+
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+        <div id="WindowsDetallePedido" class="form-inline">
+            <h1>Windown main</h1>
+            <button class="btn"></button>
+
+    </div>
+
+}
+@section scripts
+{
+
+    @*<script src="~/Venta/bootstrap/js/pedidoJavaScript.js"></script>*@
+
+
+ 
+
+}
+
+
+
+<div class=container>
+    <div class="row">
+        <div *ngFor="let objFotoProducot of data , let i=index" class="col-sm-4">
+            <figure>
+             <a href="{{objFotoProducot.beFoto.rutafoto}}">
+            <img height="230px" width="230px" src="{{objFotoProducot.beFoto.rutafoto}}"></a>
+
+            <div class="caption">
+                <h5>{{objFotoProducot.producto.descripcion}}</h5>
+                <p>
+                </p>|
+                <h4>
+                    <a class="btn btn-primary crearPedido btlDetalle" href="#">Comprar</a>
+                    <a class="btn ">Ver detalle</a>
+                    <a class="btn btnAgregarProducto"><label id="@modelo.Producto.codigo" data-toggle="modal" data-target="#Modal1" style="font-weight:normal">Agregar</label><i class="icon-shopping-cart"></i></a>
+                    <a class="text-left small" href="#">{{objFotoProducot.producto.precio}} s/.</a>
+                </h4>
+            </div>
+            </figure>
+        </div>
+    </div>
+</div>
+
+

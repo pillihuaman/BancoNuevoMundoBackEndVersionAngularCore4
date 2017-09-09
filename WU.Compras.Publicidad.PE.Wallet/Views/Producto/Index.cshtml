@@ -1,0 +1,119 @@
+@model IEnumerable<WU.Compras.Publicidad.PE.Wallet.Models.Entity.ProductoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            idproducto
+            </th>
+            <th>
+               Nombre
+            </th>
+            <th>
+              idcategoria
+            </th>
+            <th>
+              idestado
+            </th>
+            <th>
+               Descripcion
+            </th>
+            <th>
+            fechaCreacion
+            </th>
+            <th>
+         fechaModificacion
+            </th>
+            <th>
+        LineaProducto
+            </th>
+            <th>
+            codigo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+         @if (Model != null)
+         {
+             foreach (var item in Model)
+             {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idproducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idcategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idestado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaModificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LineaProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+             }
+         }
+    </tbody>
+</table>
+
+<div class='row'>
+    <div class='col-xs-3'> <label class='control-label'>Select Session Number:</label></div>
+    <div class='col-xs-3'>{{sessionNumberCtrl}}</div>
+    <div class='col-xs-3'><label class='control-label'>Session Between<em style='color:red'>*</em>: </label></div>
+    <div class='col-xs-3'>{{Team1Ctrl}} <label class='control-label'> vs </label> {{Team2Ctrl}} </div>
+</div>
+<div class='clearfix'></div>
+
+<div class='row'>
+    <div class='col-xs-3'><label class='control-label'>Student Name:</label></div>
+    <div class='col-xs-3'><label class='control-label'>Team:</label></div>
+    <div class='col-xs-3'><label class='control-label'>Maths </label></div>
+    <div class='col-xs-3'><label class='control-label'>Physics </label></div>
+    <div class='col-xs-3'><label class='control-label'>Chemistry </label></div>
+    <div class='col-xs-3'><label class='control-label'>option1 / option2</label></div>
+    <div class='col-xs-3'><label class='control-label'>Total</label></div>
+</div>
+<div class='clearfix'></div>
+
+<div class='row'>
+    <div class='col-xs-3'><label class='control-label'>1</label></div>
+    <div class='col-xs-3'><label class='control-label'>2:</label></div>
+    <div class='col-xs-3'><label class='control-label'>3 </label></div>
+    <div class='col-xs-3'><label class='control-label'>4 </label></div>
+    <div class='col-xs-3'><label class='control-label'>5 </label></div>
+    <div class='col-xs-3'><label class='control-label'>6 / option2</label></div>
+    <div class='col-xs-3'><label class='control-label'>7</label></div>
+    <div class='col-xs-3'><label class='control-label'>8</label></div>
+</div>
+<div class='clearfix'></div>

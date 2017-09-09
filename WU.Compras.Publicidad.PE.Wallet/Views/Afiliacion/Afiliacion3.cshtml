@@ -1,0 +1,69 @@
+﻿
+@model WU.Compras.Publicidad.PE.Wallet.Models.Entity.AfiliarClienteViewModel
+
+
+@{
+    ViewData["Title"] = "Afilia3";
+  Layout = "~/Views/Shared/_LayoutV2.cshtml";
+}
+<hr />
+
+<form class="form-horizontal" asp-action="Afiliacion3">
+    <input asp-for="AceptaPolitica" type="hidden" />
+    <input asp-for="ApellidoMaterno" type="hidden" />
+    <input asp-for="ApellidoPaterno" type="hidden" />
+    @*<input asp-for="CodigoAfiliacion" type="hidden" />*@
+    <input asp-for="Email" type="hidden" />
+    <input asp-for="FechaEmisionDocumento" type="hidden" />
+    <input asp-for="Genero" type="hidden" />
+    <input asp-for="IdEstadoCivil" type="hidden" />
+    <input asp-for="IdTipoOperador" type="hidden" />
+    <input asp-for="Nombres" type="hidden" />
+    <input asp-for="NumeroDocumento" type="hidden" />
+    <input asp-for="NumeroMovil" type="hidden" />
+    <input asp-for="RecibeBoletin" type="hidden" />
+    <input asp-for="RecibeTarjeta" type="hidden" />
+    <input asp-for="PasswordHash" type="hidden" />
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ingrese codigo de Afiliacion </label>
+        <div class="col-md-10">
+            <div>
+                <input type="text" name="CodigoAfiliacion"  id="CodigoAfiliacion" class="form-control"/>
+         
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Continuar" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+@*<form asp-action="Afilia2">
+         <div class="form-inline">
+             <label></label>
+             <div class="col-md-2">
+
+             </div>
+         </div>
+
+
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">Categoría</label>
+                <div class="col-md-10">
+                    <div>
+                        <select asp-for="IdTipoOperador" class="form-control"
+                                asp-items="@(new SelectList(ViewBag.operador, "IdTipoOperador","TipoOperador"))"></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>*@
+
+

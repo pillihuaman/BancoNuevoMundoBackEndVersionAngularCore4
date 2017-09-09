@@ -1,0 +1,20 @@
+﻿body {
+}
+.modal-backdrop
+ {
+     background-color:aliceblue;
+}
+
+    .modal.fade.in 
+    {
+         left:40%;
+         background-color:aliceblue;
+         border:none;
+            }
+.modal
+ {
+
+}
+.modal-content {
+    width:300px;
+}

@@ -1,0 +1,132 @@
+﻿   <div id="example">
+        <div id="window">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="container">Numero</div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="container">Nombre</div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="container">Precio</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="container">Stock</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="container">Estado</div>
+                    </div>
+
+                </div>
+
+                @if (Model != null)
+                {
+                    foreach (var modelo in Model)
+                    {
+                        var Numeracion = 0;
+                        <form asp-action="VerDetalleCompra">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="container">@Numeracion</div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="container">@modelo.descripcion</div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="container">@modelo.Total</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="container">@modelo.Stock</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="container">
+                                        <estadospedido estado="@modelo.Error"></estadospedido>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @Numeracion= Numeracion + 1;
+
+                    }
+                }
+            </div>
+        </div>
+
+        <span id="undo" style="display:none" class="k-button hide-on-narrow">Click here to open the window.</span>
+
+        <div class="responsive-message"></div>
+
+        <script>
+                $(document).ready(function() {
+                    var myWindow = $("#window"),
+                        undo = $("#undo");
+
+                    undo.click(function() {
+                        myWindow.data("kendoWindow").open();
+                        undo.fadeOut();
+                    });
+
+                    function onClose() {
+                        undo.fadeIn();
+                    }
+
+                    myWindow.kendoWindow({
+                        width: "600px",
+                        title: "About Alvar Aalto",
+                        visible: false,
+                        actions: [
+                            "Pin",
+                            "Minimize",
+                            "Maximize",
+                            "Close"
+                        ],
+                        close: onClose
+                    }).data("kendoWindow").center().open();
+                });
+        </script>
+
+        @*<style>
+
+                #example {
+                    min-height:500px;
+                }
+                #undo {
+                    text-align: center;
+                    position: absolute;
+                    white-space: nowrap;
+                    padding: 1em;
+                    cursor: pointer;
+                }
+                .armchair {
+                	float: left;
+                	margin: 30px 30px 120px 30px;
+                	text-align: center;
+                }
+                .armchair img {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+                .k-window-content a {
+                    color: #BBB;
+                }
+                .k-window-content p {
+                    margin-bottom: 1em;
+                }
+
+                @media screen and (max-width: 1023px) {
+                    div.k-window {
+                        display: none !important;
+                    }
+                }
+        </style>*@
+    </div>
+
+
+
+
+

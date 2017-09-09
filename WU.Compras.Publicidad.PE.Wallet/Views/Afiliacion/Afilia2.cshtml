@@ -1,0 +1,121 @@
+﻿@model WU.Compras.Publicidad.PE.Wallet.Models.Entity.AfiliarClienteViewModel
+
+@{
+    ViewData["Title"] = "Afilia2";
+    //Layout = "~/Views/Shared/_LayoutV2.cshtml";
+}
+<hr />
+
+<form class="form-horizontal" asp-action="Afiliaa2">
+   
+    <input asp-for="AceptaPolitica"   type="hidden" />
+    <input asp-for="ApellidoMaterno" type="hidden" />
+    <input asp-for="ApellidoPaterno" type="hidden" />
+    <input asp-for="CodigoAfiliacion" type="hidden" />
+    <input asp-for="Email" type="hidden" />
+    <input asp-for="FechaEmisionDocumento" type="hidden" />
+    <input asp-for="Genero" type="hidden" />
+    <input asp-for="IdEstadoCivil" type="hidden" />
+    <input asp-for="IdTipoOperador" type="hidden" />
+    <input asp-for="Nombres" type="hidden" />
+    <input asp-for="NumeroDocumento" type="hidden" />
+    <input asp-for="NumeroMovil" type="hidden" />
+    <input asp-for="RecibeBoletin" type="hidden" />
+    <input asp-for="RecibeTarjeta" type="hidden" />
+    <input asp-for="PasswordHash" type="hidden" />
+            <div class="form-group">
+                <label class="col-md-2 control-label">Horario Lunes a Vienes</label>
+                <div class="col-md-10">
+                    <div>
+                        <select id="rangoHorasEntrega" name="rangoHorasEntrega" class="form-control" data-title="Rango de horas">
+                            <option value="9:00 a.m. - 1:00 p.m.">9:00 a.m. - 1:00 p.m.</option>
+                            <option value="2:00 p.m. - 6:00 p.m.">2:00 p.m. - 6:00 p.m.</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Departamento</label>
+        <div class="col-md-10">
+            <div>
+              <select asp-for="IdDepartamento" asp-items="@(new SelectList(ViewBag.listaDepartamento, "IdDepartamento", "Departamento"))">
+                
+              </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Provincia</label>
+        <div class="col-md-10">
+            <div>
+                <select asp-for="IdProvincia" asp-items="@(new SelectList(string.Empty, "IdProvincia", "Provincia"))"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Distrito</label>
+        <div class="col-md-10">
+            <div>
+                <select asp-for="IdDistrito" asp-items="@(new SelectList(string.Empty, "IdDistrito", "Distrito"))"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="xDireccion" class="col-md-2 control-label">Direccion</label>
+        <div class="col-md-10">
+            <input asp-for="xDireccion" class="form-control" />
+            <span asp-validation-for="xDireccion" class="text-danger" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="xReferencia" class="col-md-2 control-label">Referencia</label>
+        <div class="col-md-10">
+            <input asp-for="xReferencia" class="form-control" />
+            <span asp-validation-for="xReferencia" class="text-danger" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Continuar" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+@*<form asp-action="Afilia2">
+     <div class="form-inline">
+         <label></label>
+         <div class="col-md-2">
+
+         </div>
+     </div>
+
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Categoría</label>
+            <div class="col-md-10">
+                <div>
+                    <select asp-for="IdTipoOperador" class="form-control"
+                            asp-items="@(new SelectList(ViewBag.operador, "IdTipoOperador","TipoOperador"))"></select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>*@
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
