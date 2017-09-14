@@ -123,6 +123,60 @@ namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("VE.BusinessEntity.Base.BEUsuario", b =>
+                {
+                    b.Property<long>("IdUsuario")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("CodigoConfirmacionEmail");
+
+                    b.Property<string>("CodigoConfirmacionMovil");
+
+                    b.Property<byte?>("ConfirmoEmail");
+
+                    b.Property<byte?>("ConfirmoMovil");
+
+                    b.Property<string>("Contrasenia");
+
+                    b.Property<string>("DNI");
+
+                    b.Property<DateTime?>("FechaActivacion");
+
+                    b.Property<DateTime>("FechaModificacion");
+
+                    b.Property<DateTime?>("FechaUltimoLogin");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<long>("IdCliente");
+
+                    b.Property<int>("IdEstadoUsuario");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("NombreUsuario");
+
+                    b.Property<string>("NumeroDocumento");
+
+                    b.Property<int>("NumeroFallas");
+
+                    b.Property<int>("NumeroReenvioPin");
+
+                    b.Property<string>("Password");
+
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
+
+                    b.Property<Guid?>("TokenUsuario");
+
+                    b.HasKey("IdUsuario");
+
+                    b.ToTable("BEUsuario");
+                });
+
             modelBuilder.Entity("WU.Compras.Publicidad.PE.Wallet.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");

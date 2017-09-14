@@ -15,10 +15,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using VE.DataAccess;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Cors;
 
 namespace WU.Compras.Publicidad.PE.Wallet.Controllers
 {
     [Authorize]
+    [Route("[controller]")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -49,20 +51,20 @@ namespace WU.Compras.Publicidad.PE.Wallet.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
-           
                 ViewData["ReturnUrl"] = returnUrl;
                 return View();
-            
-
-        
         }
 
-        [HttpPost("Autentificacion")]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public IActionResult LoginAutenfication([FromForm]ApplicationUser ApplicationUser)
+        [EnableCors("Corspolicy")]
+        [HttpPost("Autentificacion")]
+        public IActionResult LoginAutenfication(string password ,string username)
         {
-            var user = _IUserService.Autentificacion(ApplicationUser.UserName, ApplicationUser.Password);
+        
+        var UserName =  "pillihuamanhz+556011122@gmail.com";
+        var Password =  "@@@@@1234AMBvvd]";
+            ApplicationUser user = new ApplicationUser();
+             user = _IUserService.Autentificacion(UserName, Password );
             if (user == null)
                 return Unauthorized();
             var Tokenhandler = new JwtSecurityTokenHandler();

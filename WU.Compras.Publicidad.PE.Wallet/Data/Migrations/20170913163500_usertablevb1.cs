@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class usertablevb1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,20 +37,60 @@ namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
             //        table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
             //    });
 
+            migrationBuilder.CreateTable(
+                name: "BEUsuario",
+                columns: table => new
+                {
+                    IdUsuario = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(nullable: true),
+                    CodigoConfirmacionEmail = table.Column<string>(nullable: true),
+                    CodigoConfirmacionMovil = table.Column<string>(nullable: true),
+                    ConfirmoEmail = table.Column<byte>(nullable: true),
+                    ConfirmoMovil = table.Column<byte>(nullable: true),
+                    Contrasenia = table.Column<string>(nullable: true),
+                    DNI = table.Column<string>(nullable: true),
+                    FechaActivacion = table.Column<DateTime>(nullable: true),
+                    FechaModificacion = table.Column<DateTime>(nullable: false),
+                    FechaUltimoLogin = table.Column<DateTime>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    IdCliente = table.Column<long>(nullable: false),
+                    IdEstadoUsuario = table.Column<int>(nullable: false),
+                    LastName = table.Column<string>(nullable: true),
+                    NombreUsuario = table.Column<string>(nullable: true),
+                    NumeroDocumento = table.Column<string>(nullable: true),
+                    NumeroFallas = table.Column<int>(nullable: false),
+                    NumeroReenvioPin = table.Column<int>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true),
+                    TokenUsuario = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BEUsuario", x => x.IdUsuario);
+                });
+
             //migrationBuilder.CreateTable(
             //    name: "AspNetUsers",
             //    columns: table => new
             //    {
             //        Id = table.Column<string>(nullable: false),
             //        AccessFailedCount = table.Column<int>(nullable: false),
+            //        Address = table.Column<string>(nullable: true),
             //        ConcurrencyStamp = table.Column<string>(nullable: true),
+            //        DNI = table.Column<string>(nullable: true),
             //        Email = table.Column<string>(maxLength: 256, nullable: true),
             //        EmailConfirmed = table.Column<bool>(nullable: false),
+            //        FirstName = table.Column<string>(nullable: true),
+            //        LastName = table.Column<string>(nullable: true),
             //        LockoutEnabled = table.Column<bool>(nullable: false),
             //        LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
             //        NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
             //        NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+            //        Password = table.Column<string>(nullable: true),
             //        PasswordHash = table.Column<string>(nullable: true),
+            //        PasswordSalt = table.Column<byte[]>(nullable: true),
             //        PhoneNumber = table.Column<string>(nullable: true),
             //        PhoneNumberConfirmed = table.Column<bool>(nullable: false),
             //        SecurityStamp = table.Column<string>(nullable: true),
@@ -155,41 +193,41 @@ namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
             //    table: "AspNetRoles",
             //    column: "NormalizedName");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_AspNetRoleClaims_RoleId",
-            //    table: "AspNetRoleClaims",
-            //    column: "RoleId");
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_AspNetUserClaims_UserId",
-            //    table: "AspNetUserClaims",
-            //    column: "UserId");
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_AspNetUserLogins_UserId",
-            //    table: "AspNetUserLogins",
-            //    column: "UserId");
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_AspNetUserRoles_RoleId",
-            //    table: "AspNetUserRoles",
-            //    column: "RoleId");
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId",
+                table: "AspNetUserRoles",
+                column: "RoleId");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "IX_AspNetUserRoles_UserId",
-            //    table: "AspNetUserRoles",
-            //    column: "UserId");
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_UserId",
+                table: "AspNetUserRoles",
+                column: "UserId");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "EmailIndex",
-            //    table: "AspNetUsers",
-            //    column: "NormalizedEmail");
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
 
-            //migrationBuilder.CreateIndex(
-            //    name: "UserNameIndex",
-            //    table: "AspNetUsers",
-            //    column: "NormalizedUserName",
-            //    unique: true);
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -208,6 +246,9 @@ namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
 
             //migrationBuilder.DropTable(
             //    name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BEUsuario");
 
             //migrationBuilder.DropTable(
             //    name: "AspNetRoles");

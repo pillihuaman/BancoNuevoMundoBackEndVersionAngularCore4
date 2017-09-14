@@ -7,11 +7,15 @@ using Microsoft.EntityFrameworkCore;
 using WU.Compras.Publicidad.PE.Wallet.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using VE.BusinessEntity.Base;
 
 namespace WU.Compras.Publicidad.PE.Wallet.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+
+        public DbSet<BEUsuario> BEUsuario { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

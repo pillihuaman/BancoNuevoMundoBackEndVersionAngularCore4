@@ -58,7 +58,7 @@ namespace WU.Compras.Publicidad.PE.Wallet
             services.Configure<URLApiPath>(Configuration.GetSection("URLAPI"));
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddCors(options => 
-            { options.AddPolicy("Corspolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()); });
+            { options.AddPolicy("Corspolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().DisallowCredentials()); });
             services.AddMvc
                 (
                 optionsca=>

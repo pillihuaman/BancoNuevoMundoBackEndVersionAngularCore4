@@ -8,8 +8,8 @@ using WU.Compras.Publicidad.PE.Wallet.Data;
 namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170908234739_v12")]
-    partial class v12
+    [Migration("20170913163500_usertablevb1")]
+    partial class usertablevb1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,6 +122,60 @@ namespace WU.Compras.Publicidad.PE.Wallet.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("VE.BusinessEntity.Base.BEUsuario", b =>
+                {
+                    b.Property<long>("IdUsuario")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("CodigoConfirmacionEmail");
+
+                    b.Property<string>("CodigoConfirmacionMovil");
+
+                    b.Property<byte?>("ConfirmoEmail");
+
+                    b.Property<byte?>("ConfirmoMovil");
+
+                    b.Property<string>("Contrasenia");
+
+                    b.Property<string>("DNI");
+
+                    b.Property<DateTime?>("FechaActivacion");
+
+                    b.Property<DateTime>("FechaModificacion");
+
+                    b.Property<DateTime?>("FechaUltimoLogin");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<long>("IdCliente");
+
+                    b.Property<int>("IdEstadoUsuario");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("NombreUsuario");
+
+                    b.Property<string>("NumeroDocumento");
+
+                    b.Property<int>("NumeroFallas");
+
+                    b.Property<int>("NumeroReenvioPin");
+
+                    b.Property<string>("Password");
+
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
+
+                    b.Property<Guid?>("TokenUsuario");
+
+                    b.HasKey("IdUsuario");
+
+                    b.ToTable("BEUsuario");
                 });
 
             modelBuilder.Entity("WU.Compras.Publicidad.PE.Wallet.Models.ApplicationUser", b =>
