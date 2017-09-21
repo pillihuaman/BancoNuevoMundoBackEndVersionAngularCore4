@@ -16,6 +16,8 @@ using System.Text;
 using VE.DataAccess;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Cors;
+using VE.BusinessEntity.Base;
+using Newtonsoft.Json;
 
 namespace WU.Compras.Publicidad.PE.Wallet.Controllers
 {
@@ -35,14 +37,14 @@ namespace WU.Compras.Publicidad.PE.Wallet.Controllers
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory , IUserService _IUserServices)
+            ILoggerFactory loggerFactory, IUserService _IUserService1)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
-            _IUserServices = _IUserService;
+            _IUserService = _IUserService1;
         }
 
         //
@@ -51,20 +53,20 @@ namespace WU.Compras.Publicidad.PE.Wallet.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
-                ViewData["ReturnUrl"] = returnUrl;
-                return View();
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
         }
 
-        [AllowAnonymous]
-        [EnableCors("Corspolicy")]
+
+      
         [HttpPost("Autentificacion")]
-        public IActionResult LoginAutenfication(string password ,string username)
+        public IActionResult LoginAutenfication(string password, string username)
         {
-        
-        var UserName =  "pillihuamanhz+556011122@gmail.com";
-        var Password =  "@@@@@1234AMBvvd]";
+
+            var UserName = "pillihuamanhz+556011122@gmail.com";
+            var Password = "@@@@@1234AMBvvd]";
             ApplicationUser user = new ApplicationUser();
-             user = _IUserService.Autentificacion(UserName, Password );
+            user = _IUserService.Autentificacion(UserName, Password);
             if (user == null)
                 return Unauthorized();
             var Tokenhandler = new JwtSecurityTokenHandler();
@@ -79,19 +81,24 @@ namespace WU.Compras.Publicidad.PE.Wallet.Controllers
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha512Signature)
-              };
-             var Token = Tokenhandler.CreateToken(TokenDescriptor);
-             var tokenString = Tokenhandler.WriteToken(Token);
+            };
+            var Token = Tokenhandler.CreateToken(TokenDescriptor);
+            var tokenString = Tokenhandler.WriteToken(Token);
 
-                return Ok(
-                  new {
-                     
-                     Id=user.Id,
-                     username=user.UserName,
-                     fisrtName=user.FirstName,
-                     lastName=user.LastName,
-                     token=tokenString});
+            return Ok(
+              new {
+
+                  Id = user.Id,
+                  username = user.UserName,
+                  fisrtName = user.FirstName,
+                  lastName = user.LastName,
+                  token = tokenString });
         }
+
+
+
+
+
 
         //
         // POST: /Account/Login
@@ -102,7 +109,7 @@ namespace WU.Compras.Publicidad.PE.Wallet.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
 
-          
+
 
             if (ModelState.IsValid)
             {
@@ -133,8 +140,29 @@ namespace WU.Compras.Publicidad.PE.Wallet.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-     
-        //
+
+
+        [AllowAnonymous]
+        [EnableCors("Corspolicy")]
+        [HttpPost("RegistrarUsuario")]
+        public async Task<IActionResult> Create([FromBody]BEUsuario BEUsuario)
+        {
+            var Registrarusuario =  new BEUsuario();
+            try
+            {
+                 Registrarusuario = _IUserService.Create(BEUsuario);
+
+                  
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return Json(JsonConvert.SerializeObject(Registrarusuario));
+        }
+         
+        
         // GET: /Account/Register
         [HttpGet]
         [AllowAnonymous]

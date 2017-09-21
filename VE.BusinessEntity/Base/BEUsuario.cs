@@ -12,14 +12,13 @@ namespace VE.BusinessEntity.Base
         [Key]
         public Int64 IdUsuario { get; set; }
         public string DNI { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string Password { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string Direccion { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public Int64 IdCliente { get; set; }
-        public string NumeroDocumento { get; set; }
+        public DateTime FechaCreacion { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasenia { get; set; }
         public byte? ConfirmoMovil { get; set; }
@@ -33,5 +32,6 @@ namespace VE.BusinessEntity.Base
         public DateTime FechaModificacion { get; set; }
         public Guid? TokenUsuario { get; set; }
         public DateTime? FechaActivacion { get; set; }
-    }
+         public string CorreoElectronico { get; set; }
+    } 
 }

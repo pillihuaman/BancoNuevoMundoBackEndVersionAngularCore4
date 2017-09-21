@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VE.BusinessEntity.Base;
 using WU.Compras.Publicidad.PE.Wallet.Data;
 using WU.Compras.Publicidad.PE.Wallet.Models;
 using WU.Compras.Publicidad.PE.Wallet.Models.AccountViewModels;
@@ -69,6 +70,67 @@ namespace WU.Compras.Publicidad.PE.Wallet.Services
         }
 
         public void Update(RegisterViewModel user, string password = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BEUsuario Create(BEUsuario BEUsuario)
+        {
+            if (BEUsuario != null)
+            {
+                if (BEUsuario.DNI != null && BEUsuario.NombreUsuario != null && BEUsuario.Contrasenia != null && BEUsuario.Direccion != null)
+                {
+                    if (_Context.Users.Any(x => x.DNI == BEUsuario.DNI))
+                    {
+
+                        throw new Exception("DNI" + BEUsuario.DNI + "existe intente");
+                    }
+                    else
+                    {
+
+
+                        byte[] PassWordSal, PassworHash;
+                        var BEUsusaio = new BEUsuario();
+                        CreatePasswordHash(BEUsuario.Contrasenia, out PassworHash, out PassWordSal);
+                        BEUsuario.PasswordHash = PassworHash;
+                        BEUsuario.PasswordSalt = PassWordSal;
+                        BEUsuario.FechaModificacion = DateTime.Now;
+                        BEUsuario.Contrasenia = null;
+                        BEUsuario.FechaCreacion = DateTime.Now;
+                        _Context.BEUsuario.Add(BEUsuario);
+                        _Context.SaveChanges();
+
+                        BEUsusaio.IdUsuario = BEUsuario.IdUsuario;
+                        BEUsusaio.CorreoElectronico = BEUsuario.CorreoElectronico;
+
+
+                        return BEUsusaio;
+                    }
+                    
+
+                }
+            }
+            return new BEUsuario { NombreUsuario="Exite un error"};
+        }
+
+        private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+
+            if (password == null) throw new ArgumentException("Password");
+            if (string.IsNullOrEmpty(password)) throw new ArgumentException("El valor no puede ser nulo a vacio", "password");
+            using (var HmacPass = new System.Security.Cryptography.HMACSHA512()) 
+            {
+                passwordSalt = HmacPass.Key;
+                passwordHash = HmacPass.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+
+
+            }
+                    
+
+        }
+
+        public BEUsuario RegistrarUsuario(BEUsuario BEUsuario)
         {
             throw new NotImplementedException();
         }

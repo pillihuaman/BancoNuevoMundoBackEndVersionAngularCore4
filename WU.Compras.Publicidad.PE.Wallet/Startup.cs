@@ -58,7 +58,12 @@ namespace WU.Compras.Publicidad.PE.Wallet
             services.Configure<URLApiPath>(Configuration.GetSection("URLAPI"));
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddCors(options => 
-            { options.AddPolicy("Corspolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().DisallowCredentials()); });
+            { options.AddPolicy("Corspolicy", builder => builder.AllowAnyOrigin()
+                                                                .AllowAnyMethod()
+                                                                .AllowAnyHeader()
+                                                                .DisallowCredentials())
+                                                              
+                ; });
             services.AddMvc
                 (
                 optionsca=>
@@ -141,6 +146,8 @@ namespace WU.Compras.Publicidad.PE.Wallet
                     template: "{controller=Home}/{action=Index}/{id?}");
             }
             );
+
+
 
             //app.Run(context => {
             //    var status = Configuration["status"];
